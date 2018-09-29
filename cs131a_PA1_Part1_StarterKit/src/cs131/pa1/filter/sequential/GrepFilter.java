@@ -1,15 +1,15 @@
 package cs131.pa1.filter.sequential;
 import cs131.pa1.filter.Message;
 
-public class GrepFilter extends SequentialFilter throws Exception{
+public class GrepFilter extends SequentialFilter {
 	private String target;
 	
-	public GrepFilter (String input) {
+	public GrepFilter (String input) throws Exception {
 		super();
 		grabTarget(input);
 	}
 	
-	private void grabTarget (String input) {
+	private void grabTarget (String input) throws Exception {
 		//to deal with the case that the target string is a phrase (as described in the link given in instruction)
 		if (input.indexOf('\'') != -1) {
 			int start = input.indexOf('\'')
@@ -27,7 +27,7 @@ public class GrepFilter extends SequentialFilter throws Exception{
 		}
 		//to deal with invalid input
 		if (target.equals(null)) {
-			throw new Exception(MESSAGE.REQUIRES_PARAMETER.toString(), input);
+			throw new Exception(Message.REQUIRES_PARAMETER.toString(), input);
 		}
 	}
 	protected String processLine (String line) {

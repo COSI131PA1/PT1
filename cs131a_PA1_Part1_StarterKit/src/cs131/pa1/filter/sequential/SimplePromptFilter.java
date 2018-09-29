@@ -2,15 +2,15 @@ package cs131.pa1.filter.sequential;
 import cs131.pa1.filter.Message;
 import java.io.*;
 
-public class SimplePromptFilter extends SequentialFilter throws Exception{
+public class SimplePromptFilter extends SequentialFilter {
 	private String targetFileName;
 	private File targetFile;
-	public SimplePromptFilter (Stirng fileName) {
+	public SimplePromptFilter (Stirng fileName) throws Exception {
 		String[] fileNameSplit = fileName.split(" ");
 		if (fileNameSplit.length > 0) {
 			targetFileName =  fileNameSplit[1];
 		} else {
-			throw new Exception (MESSAGE.REQUIRES_PARAMETER.toString(), fileName);
+			throw new Exception (Message.REQUIRES_PARAMETER.toString(), fileName);
 		}
 		File targetFile = new File(targetFileName);
 		//To get if the file with given name already exists
